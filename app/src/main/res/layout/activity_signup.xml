@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4FAF9"
+    android:fillViewport="true"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="22dp">
+
+        <!-- App heading -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="Maternal Nutrition"
+            android:textColor="#00897B"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Create Account"
+            android:textColor="#00695C"
+            android:textSize="29sp"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="24dp"
+            android:text="Register to start monitoring your maternal nutrition."
+            android:textColor="#78909C"
+            android:textSize="14sp"
+            android:gravity="center" />
+
+        <!-- Registration card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="5dp"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Personal Information"
+                    android:textColor="#00695C"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="15dp" />
+
+                <!-- Full name -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/input_background"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="10dp"
+                    android:layout_marginBottom="13dp">
+
+                    <ImageView
+                        android:layout_width="23dp"
+                        android:layout_height="23dp"
+                        android:src="@android:drawable/ic_menu_myplaces"
+                        android:contentDescription="Full name icon"
+                        app:tint="#00897B" />
+
+                    <EditText
+                        android:id="@+id/editFullName"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="Full name"
+                        android:inputType="textPersonName|textCapWords"
+                        android:textColor="#263238"
+                        android:textColorHint="#90A4AE"
+                        android:textSize="15sp"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="8dp"
+                        android:background="@android:color/transparent"
+                        android:singleLine="true" />
+                </LinearLayout>
+
+                <!-- Email -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/input_background"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="10dp"
+                    android:layout_marginBottom="13dp">
+
+                    <ImageView
+                        android:layout_width="23dp"
+                        android:layout_height="23dp"
+                        android:src="@android:drawable/ic_dialog_email"
+                        android:contentDescription="Email icon"
+                        app:tint="#00897B" />
+
+                    <EditText
+                        android:id="@+id/editEmail"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="Email address"
+                        android:inputType="textEmailAddress"
+                        android:textColor="#263238"
+                        android:textColorHint="#90A4AE"
+                        android:textSize="15sp"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="8dp"
+                        android:background="@android:color/transparent"
+                        android:singleLine="true" />
+                </LinearLayout>
+
+                <!-- Phone number -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/input_background"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="10dp"
+                    android:layout_marginBottom="13dp">
+
+                    <ImageView
+                        android:layout_width="23dp"
+                        android:layout_height="23dp"
+                        android:src="@android:drawable/ic_menu_call"
+                        android:contentDescription="Phone icon"
+                        app:tint="#00897B" />
+
+                    <EditText
+                        android:id="@+id/editPhone"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="Phone number"
+                        android:inputType="phone"
+                        android:textColor="#263238"
+                        android:textColorHint="#90A4AE"
+                        android:textSize="15sp"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="8dp"
+                        android:background="@android:color/transparent"
+                        android:singleLine="true" />
+                </LinearLayout>
+
+                <!-- Pregnancy week -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/input_background"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="10dp"
+                    android:layout_marginBottom="20dp">
+
+                    <ImageView
+                        android:layout_width="23dp"
+                        android:layout_height="23dp"
+                        android:src="@android:drawable/ic_menu_today"
+                        android:contentDescription="Pregnancy week icon"
+                        app:tint="#00897B" />
+
+                    <EditText
+                        android:id="@+id/editPregnancyWeek"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="Pregnancy week (1-42)"
+                        android:inputType="number"
+                        android:textColor="#263238"
+                        android:textColorHint="#90A4AE"
+                        android:textSize="15sp"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="8dp"
+                        android:background="@android:color/transparent"
+                        android:singleLine="true" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Account Security"
+                    android:textColor="#00695C"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="15dp" />
+
+                <!-- Password -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/input_background"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="10dp"
+                    android:layout_marginBottom="8dp">
+
+                    <ImageView
+                        android:layout_width="23dp"
+                        android:layout_height="23dp"
+                        android:src="@android:drawable/ic_lock_lock"
+                        android:contentDescription="Password icon"
+                        app:tint="#00897B" />
+
+                    <EditText
+                        android:id="@+id/editPassword"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="Create password"
+                        android:inputType="textPassword"
+                        android:textColor="#263238"
+                        android:textColorHint="#90A4AE"
+                        android:textSize="15sp"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="5dp"
+                        android:background="@android:color/transparent"
+                        android:singleLine="true" />
+
+                    <ImageView
+                        android:id="@+id/btnTogglePassword"
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:padding="9dp"
+                        android:src="@android:drawable/ic_menu_view"
+                        android:contentDescription="Show password"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground"
+                        app:tint="#607D8B" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Use at least 8 characters for your password."
+                    android:textColor="#78909C"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="13dp" />
+
+                <!-- Confirm password -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/input_background"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="10dp"
+                    android:layout_marginBottom="22dp">
+
+                    <ImageView
+                        android:layout_width="23dp"
+                        android:layout_height="23dp"
+                        android:src="@android:drawable/ic_lock_lock"
+                        android:contentDescription="Confirm password icon"
+                        app:tint="#00897B" />
+
+                    <EditText
+                        android:id="@+id/editConfirmPassword"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="Confirm password"
+                        android:inputType="textPassword"
+                        android:textColor="#263238"
+                        android:textColorHint="#90A4AE"
+                        android:textSize="15sp"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="5dp"
+                        android:background="@android:color/transparent"
+                        android:singleLine="true" />
+
+                    <ImageView
+                        android:id="@+id/btnToggleConfirmPassword"
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:padding="9dp"
+                        android:src="@android:drawable/ic_menu_view"
+                        android:contentDescription="Show confirm password"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground"
+                        app:tint="#607D8B" />
+                </LinearLayout>
+
+                <!-- Register button -->
+                <Button
+                    android:id="@+id/buttonRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:text="Create Account"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#00897B"
+                    android:elevation="3dp" />
+
+                <!-- Login link -->
+                <TextView
+                    android:id="@+id/textLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="Already have an account? Log in"
+                    android:textColor="#00897B"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"
+            android:text="Your information is kept private."
+            android:textColor="#90A4AE"
+            android:textSize="12sp"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+</ScrollView>

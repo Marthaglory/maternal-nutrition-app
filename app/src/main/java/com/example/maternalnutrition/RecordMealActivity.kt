@@ -1,3 +1,4 @@
+
 package com.example.maternalnutrition
 
 import android.os.Bundle
@@ -7,11 +8,13 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import org.json.JSONArray
-import org.json.JSONObject
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import androidx.lifecycle.lifecycleScope
+import com.example.maternalnutrition.database.AppDatabase
+import com.example.maternalnutrition.database.Meal
+import com.example.maternalnutrition.utils.SessionManager
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class RecordMealActivity : AppCompatActivity() {
 
@@ -20,22 +23,35 @@ class RecordMealActivity : AppCompatActivity() {
     private lateinit var editNotes: EditText
     private lateinit var btnSaveMeal: Button
 
+    private lateinit var database: AppDatabase
+    private lateinit var sessionManager: SessionManager
+
+    private var currentUserId: Int = -1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_record_meal)
 
-        spinnerMealType =
-            findViewById(R.id.spinnerMealType)
+        database = AppDatabase.getDatabase(this)
+        sessionManager = SessionManager(this)
 
-        editFood =
-            findViewById(R.id.editFood)
+        currentUserId = sessionManager.getUserId()
 
-        editNotes =
-            findViewById(R.id.editNotes)
+        if (!sessionManager.isLoggedIn() || currentUserId <= 0) {
+            Toast.makeText(
+                this,
+                "Please log in to record a meal",
+                Toast.LENGTH_SHORT
+            ).show()
+            finish()
+            return
+        }
 
-        btnSaveMeal =
-            findViewById(R.id.btnSaveMeal)
+        spinnerMealType = findViewById(R.id.spinnerMealType)
+        editFood = findViewById(R.id.editFood)
+        editNotes = findViewById(R.id.editNotes)
+        btnSaveMeal = findViewById(R.id.btnSaveMeal)
 
         val mealTypes = arrayOf(
             "Breakfast",
@@ -65,14 +81,9 @@ class RecordMealActivity : AppCompatActivity() {
 
     private fun saveMeal() {
 
-        val mealType =
-            spinnerMealType.selectedItem.toString()
-
-        val food =
-            editFood.text.toString().trim()
-
-        val notes =
-            editNotes.text.toString().trim()
+        val mealType = spinnerMealType.selectedItem.toString()
+        val food = editFood.text.toString().trim()
+        val notes = editNotes.text.toString().trim()
 
         if (food.isEmpty()) {
             editFood.error = "Enter the food consumed"
@@ -80,48 +91,47 @@ class RecordMealActivity : AppCompatActivity() {
             return
         }
 
-        val date = SimpleDateFormat(
-            "dd MMM yyyy, HH:mm",
-            Locale.getDefault()
-        ).format(Date())
+        if (food.length < 2) {
+            editFood.error = "Enter a valid food name"
+            editFood.requestFocus()
+            return
+        }
 
-        val preferences = getSharedPreferences(
-            "MaternalNutritionPrefs",
-            MODE_PRIVATE
+        btnSaveMeal.isEnabled = false
+
+        val meal = Meal(
+            userId = currentUserId,
+            mealType = mealType,
+            foodName = food,
+            notes = notes,
+            mealDate = System.currentTimeMillis()
         )
 
-        val existing =
-            preferences.getString(
-                "meals",
-                "[]"
-            )
+        lifecycleScope.launch {
 
-        val meals =
-            JSONArray(existing)
+            try {
+                withContext(Dispatchers.IO) {
+                    database.mealDao().insertMeal(meal)
+                }
 
-        val meal =
-            JSONObject()
+                Toast.makeText(
+                    this@RecordMealActivity,
+                    "Meal record saved successfully",
+                    Toast.LENGTH_SHORT
+                ).show()
 
-        meal.put("date", date)
-        meal.put("mealType", mealType)
-        meal.put("food", food)
-        meal.put("notes", notes)
+                finish()
 
-        meals.put(meal)
+            } catch (e: Exception) {
 
-        preferences.edit()
-            .putString(
-                "meals",
-                meals.toString()
-            )
-            .apply()
+                btnSaveMeal.isEnabled = true
 
-        Toast.makeText(
-            this,
-            "Meal record saved",
-            Toast.LENGTH_SHORT
-        ).show()
-
-        finish()
+                Toast.makeText(
+                    this@RecordMealActivity,
+                    "Failed to save meal: ${e.message}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
     }
 }

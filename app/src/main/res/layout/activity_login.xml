@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4FAF9"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="24dp">
+
+        <!-- App Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Maternal Nutrition"
+            android:textColor="#00695C"
+            android:textSize="29sp"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            android:text="Sign in to your account"
+            android:textColor="#607D8B"
+            android:textSize="16sp"
+            android:gravity="center" />
+
+        <!-- Login Card -->
+        <androidx.cardview.widget.CardView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="#FFFFFF"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="22dp">
+
+                <!-- Card Heading -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Welcome Back"
+                    android:textColor="#00695C"
+                    android:textSize="21sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="22dp" />
+
+                <!-- Email Field -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/input_background"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="8dp">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:src="@android:drawable/ic_dialog_email"
+                        android:contentDescription="Email icon"
+                        app:tint="#00897B" />
+
+                    <EditText
+                        android:id="@+id/editEmail"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="Email address"
+                        android:inputType="textEmailAddress"
+                        android:singleLine="true"
+                        android:background="@android:color/transparent"
+                        android:paddingStart="14dp"
+                        android:paddingEnd="8dp"
+                        android:textColor="#263238"
+                        android:textColorHint="#78909C"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <!-- Password Field -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/input_background"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="8dp">
+
+                    <!-- Password Icon -->
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:src="@android:drawable/ic_lock_lock"
+                        android:contentDescription="Password icon"
+                        app:tint="#00897B" />
+
+                    <!-- Password Input -->
+                    <EditText
+                        android:id="@+id/editPassword"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:singleLine="true"
+                        android:background="@android:color/transparent"
+                        android:paddingStart="14dp"
+                        android:paddingEnd="4dp"
+                        android:textColor="#263238"
+                        android:textColorHint="#78909C"
+                        android:textSize="15sp" />
+
+                    <!-- Show / Hide Password -->
+                    <ImageView
+                        android:id="@+id/btnTogglePassword"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="9dp"
+                        android:src="@android:drawable/ic_menu_view"
+                        android:contentDescription="Show or hide password"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:tint="#00897B" />
+
+                </LinearLayout>
+
+                <!-- Login Button -->
+                <Button
+                    android:id="@+id/buttonLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="26dp"
+                    android:text="Login"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#00897B"
+                    android:textColor="#FFFFFF" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Register Link -->
+        <TextView
+            android:id="@+id/textSignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="Don't have an account? Register"
+            android:textColor="#00695C"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:padding="12dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+    </LinearLayout>
+
+</ScrollView>
